@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16a34a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Fit Menu">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="styles.css">
+<title>My Fitness Menu</title>
+</head>
+<body>
+<header>
+  <h1>🥗 My Fitness Menu</h1>
+  <button id="uploadBtn" class="fab-inline">＋ Add menu</button>
+</header>
+
+<nav id="tabs">
+  <button data-cat="normal" class="active">🍽️ Normal</button>
+  <button data-cat="vegan">🌱 Vegan</button>
+  <button data-cat="fasting">⏱️ Fasting</button>
+</nav>
+
+<main>
+  <section class="card" id="searchCard">
+    <div class="field">
+      <label>Must contain</label>
+      <input id="inc" type="search" placeholder="e.g. egg, rice" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>Without</label>
+      <input id="exc" type="search" placeholder="e.g. nuts, tuna" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>Look in</label>
+      <div id="scope" class="chips"></div>
+    </div>
+    <div class="row"><span id="count"></span><button id="clear" class="link">Clear</button></div>
+  </section>
+
+  <section id="results"></section>
+</main>
+
+<dialog id="preview">
+  <form method="dialog">
+    <h2>Import menu</h2>
+    <label>Category
+      <select id="pvCat">
+        <option value="normal">Normal</option>
+        <option value="vegan">Vegan</option>
+        <option value="fasting">Intermittent fasting</option>
+      </select>
+    </label>
+    <label>Menu name
+      <input id="pvName" type="text" placeholder="e.g. BALANCE 1300kcal">
+    </label>
+    <textarea id="pvText" rows="18" placeholder="Paste the menu text here"></textarea>
+    <p id="pvInfo"></p>
+    <div id="pvDays"></div>
+    <div class="row">
+      <button value="cancel" class="link">Cancel</button>
+      <button id="pvSave" value="ok" class="primary">Save</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="editDlg">
+  <div class="dlgBody">
+    <h2>Edit day</h2>
+    <div>
+      <label for="edName">Name</label>
+      <input id="edName" type="text">
+    </div>
+    <div id="edMeals" class="edMeals"></div>
+    <div class="row">
+      <button type="button" id="edCancel" class="link">Cancel</button>
+      <button type="button" id="edSave" class="primary">Save</button>
+    </div>
+  </div>
+</dialog>
+
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
